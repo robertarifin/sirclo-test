@@ -31,18 +31,24 @@ class App extends Component {
           averageMaxWeight: data.averageMaxWeight,
           averageMinWeight: data.averageMinWeight,
           averageDifferences: data.averageDifferences
+        }, () => {
+          console.log(this.state)
         })
     })
       .catch((err) => {
-       this.setState({
-
-       })
+        this.setState({
+          weightData: [],
+          averageMaxWeight: 0,
+          averageMinWeight: 0,
+          averageDifferences: 0
+        })
       })
   }
 
   componentDidMount() {
     this.fetchData();
   }
+
 
   openCreateModal = () => {
     this.setState({

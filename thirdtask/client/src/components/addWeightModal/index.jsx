@@ -19,8 +19,8 @@ export default class AddWeightDialog extends React.Component {
   handleClose = () => {
     this.setState({
       date: '',
-      maxWeight: 0,
-      minWeight: 0,
+      maxWeight: '',
+      minWeight: '',
       openAlert: false,
       message: ''
     })
@@ -32,7 +32,7 @@ export default class AddWeightDialog extends React.Component {
     e.preventDefault();
     const {maxWeight, minWeight, date } = this.state;
     
-    const { data } = axios({
+    axios({
       method: 'post',
       url: 'http://localhost:3000/weight',
       data: {
@@ -43,9 +43,13 @@ export default class AddWeightDialog extends React.Component {
     })
       .then((data) => {
         this.setState({
+          date: '',
+          maxWeight: '',
+          minWeight: '',
           message: 'Successfully create new data!',
           openAlert: true
         })
+
         this.props.handleClose();
       })
       .catch(({response: { data: { err }}}) => {

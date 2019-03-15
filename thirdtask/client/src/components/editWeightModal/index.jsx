@@ -33,7 +33,7 @@ export default class EditWeightDialog extends React.Component {
     e.preventDefault();
     const {maxWeight, minWeight, date, id } = this.state;
     
-    const { data } = axios({
+    axios({
       method: 'patch',
       url: `http://localhost:3000/weight/${id}`,
       data: {
