@@ -17,4 +17,3 @@ const fivaa = (number) => {
 }
 
 fivaa(5);
-fivaa(7);
